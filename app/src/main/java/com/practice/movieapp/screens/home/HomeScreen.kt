@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.practice.movieapp.MovieRow
+import com.practice.movieapp.navigation.MovieScreens
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -45,7 +46,7 @@ fun MainContent(
             items(items = movieList) { movie -> //movie sustituye a it
                 MovieRow(movie = movie) { resultMovie ->
 
-                    Log.d("TAG", "MainContent: $resultMovie")
+                    navController.navigate(route = MovieScreens.DetailsScreen.name)
 
                 }
             }
