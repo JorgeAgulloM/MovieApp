@@ -60,24 +60,28 @@ fun DetailsScreen(
                 Spacer(modifier = Modifier.height(8.dp))
                 Divider()
                 Text(text = "Movie Images")
-                LazyRow {
-                    items(newMovieList[0].images) { image ->
-                        Card(
-                            modifier = Modifier
-                                .padding(12.dp)
-                                .size(240.dp),
-                            elevation = 5.dp
-                        ) {
-                            Image(
-                                painter = rememberAsyncImagePainter(model = image),
-                                contentDescription = "Movie Poster"
-                            )
-                        }
-                    }
-                }
+                HorizontalScrollableImageView(newMovieList)
             }
         }
     }
+}
 
 
+@Composable
+private fun HorizontalScrollableImageView(newMovieList: List<Movie>) {
+    LazyRow {
+        items(newMovieList[0].images) { image ->
+            Card(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .size(240.dp),
+                elevation = 5.dp
+            ) {
+                Image(
+                    painter = rememberAsyncImagePainter(model = image),
+                    contentDescription = "Movie Poster"
+                )
+            }
+        }
+    }
 }
