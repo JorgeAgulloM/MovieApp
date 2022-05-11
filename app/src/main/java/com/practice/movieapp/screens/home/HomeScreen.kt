@@ -45,9 +45,9 @@ fun MainContent(
         LazyColumn {
             items(items = movieList) { movie -> //movie sustituye a it
                 MovieRow(movie = movie) { resultMovie ->
-
-                    navController.navigate(route = MovieScreens.DetailsScreen.name)
-
+                    navController.navigate(
+                        route = MovieScreens.DetailsScreen.name+"/$resultMovie"
+                    )
                 }
             }
         }
