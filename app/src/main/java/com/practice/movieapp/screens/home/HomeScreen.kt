@@ -19,7 +19,10 @@ import com.practice.movieapp.navigation.MovieScreens
 @Composable
 fun HomeScreen(navController: NavController) {
     Scaffold(topBar = {
-        TopAppBar(backgroundColor = Color.Magenta, elevation = 5.dp) {
+        TopAppBar(
+            backgroundColor = Color.Cyan,
+            elevation = 5.dp
+        ) {
             Text(text = "Movies")
         }
     }) {
@@ -46,7 +49,7 @@ fun MainContent(
             items(items = movieList) { movie -> //movie sustituye a it
                 MovieRow(movie = movie) { resultMovie ->
                     navController.navigate(
-                        route = MovieScreens.DetailsScreen.name+"/$resultMovie"
+                        route = MovieScreens.DetailsScreen.name + "/$resultMovie"
                     )
                 }
             }
