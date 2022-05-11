@@ -10,12 +10,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.practice.movieapp.model.Movie
+import com.practice.movieapp.model.getMovies
 
 @Composable
 fun DetailsScreen(
     navController: NavController,
-    movieData: String?
+    movieId: String?
 ) {
+    val newMovieList = getMovies().filter { movie ->
+        movie.id == movieId
+    }
     Scaffold(topBar = {
         TopAppBar(
             backgroundColor = MaterialTheme.colors.primaryVariant,
@@ -43,7 +48,10 @@ fun DetailsScreen(
                 verticalArrangement = Arrangement.Center
             ) {
 
-                Text(text = movieData.toString(), style = MaterialTheme.typography.h5)
+                Text(
+                    text = newMovieList[0].title,
+                    style = MaterialTheme.typography.h5
+                )
                 /*Spacer(modifier = Modifier.height(23.dp))
                 Button(onClick = {
                     navController.popBackStack()
