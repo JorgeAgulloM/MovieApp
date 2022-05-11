@@ -1,4 +1,4 @@
-package com.practice.movieapp.screens.homr
+package com.practice.movieapp.screens.home
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
