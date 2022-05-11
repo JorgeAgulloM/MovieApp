@@ -10,9 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
+import coil.transform.CircleCropTransformation
 import com.practice.movieapp.model.Movie
 import com.practice.movieapp.model.getMovies
 
@@ -48,7 +52,13 @@ fun MovieRow(
                 elevation = 4.dp
             ) {
                 Image(
-                    painter = rememberAsyncImagePainter(model = movie.images[0]),
+                    painter = rememberAsyncImagePainter(
+                        ImageRequest.Builder(LocalContext.current).data(data = movie.images[0])
+                            .apply(block = fun ImageRequest.Builder.() {
+                                crossfade(true)
+                                transformations(CircleCropTransformation())
+                            }).build()
+                    ),
                     contentDescription = "Movie Poster"
                 )
 
